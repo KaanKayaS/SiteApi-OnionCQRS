@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SiteApi.Application.Interfaces.Repositories;
 using SiteApi.Persistence.Context;
+using SiteApi.Persistence.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,8 @@ namespace SiteApi.Persistence
         {
             services.AddDbContext<AppDbConetxt>(opt =>
             opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped(typeof(IReadRepository<>),typeof(ReadRepository<>));
         }
     }
 }
