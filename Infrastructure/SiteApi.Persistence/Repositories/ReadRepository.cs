@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Query;
 using SiteApi.Application.Interfaces.Repositories;
 using SiteApi.Domain.Common;
+using SiteApi.Persistence.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +15,8 @@ namespace SiteApi.Persistence.Repositories
     public class ReadRepository<T> : IReadRepository<T> where T : class, IEntityBase , new() // T bir clas IEntitybaseden miras alcak , ve nesne oluşturabilir
     {
 
-        private readonly DbContext _dbContext;
-        public ReadRepository(DbContext dbContext)
+        private readonly AppDbConetxt _dbContext;
+        public ReadRepository(AppDbConetxt dbContext)
         {
             _dbContext = dbContext;
         }

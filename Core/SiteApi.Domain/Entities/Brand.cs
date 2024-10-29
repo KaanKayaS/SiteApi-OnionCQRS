@@ -19,7 +19,6 @@ namespace SiteApi.Domain.Entities
             Name = name;
         }
 
-        [Required]
         public string Name { get; set; }
 
     }
