@@ -2,8 +2,10 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SiteApi.Application.Interfaces.Repositories;
+using SiteApi.Application.Interfaces.UnitOfWorks;
 using SiteApi.Persistence.Context;
 using SiteApi.Persistence.Repositories;
+using SiteApi.Persistence.UnitOfWorks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +23,8 @@ namespace SiteApi.Persistence
 
             services.AddScoped(typeof(IReadRepository<>),typeof(ReadRepository<>));
             services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         }
     }

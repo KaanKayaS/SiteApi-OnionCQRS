@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SiteApi.Application.Interfaces.Repositories;
 using SiteApi.Domain.Common;
+using SiteApi.Persistence.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,8 @@ namespace SiteApi.Persistence.Repositories
     public class WriteRepository<T> : IWriteRepository<T> where T : class, IEntityBase, new()
     {
 
-        private readonly DbContext _dbContext;
-        public WriteRepository(DbContext dbContext)
+        private readonly AppDbConetxt _dbContext;
+        public WriteRepository(AppDbConetxt dbContext)
         {
             _dbContext = dbContext;
         }
@@ -37,7 +38,7 @@ namespace SiteApi.Persistence.Repositories
 
         public async Task HardDeleteAsync(T entity)
         {
-            await Task.Run(()=> Table.Remove(entity));
+            await Task.Run(()=> Table.Remove(entity));  // silme ve update işleminin asenkronu olmadığı için Run metodundan yararlandık
         }
 
     }
