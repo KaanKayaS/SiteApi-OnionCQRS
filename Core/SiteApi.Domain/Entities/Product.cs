@@ -9,20 +9,21 @@ namespace SiteApi.Domain.Entities
 {
     public class Product : EntityBase
     {
+        //public object ProductCategories;
+
+        public Product(string title, string description, int brandId, decimal price, decimal discount)
+        {
+            Title = title;
+            Description = description;
+            BrandId = brandId;
+            Price = price;
+            Discount = discount;
+        }
+
         public Product()
         {
             
         }
-
-        public Product(string Title, string Description, int BrandId, decimal Price, decimal Discount)
-        {
-            this.Title = Title;
-            this.Description = Description;
-            this.BrandId = BrandId;
-            this.Price = Price;
-            this.Discount = Discount;
-        }
-
 
         public  string Title { get; set; }
 
@@ -35,6 +36,8 @@ namespace SiteApi.Domain.Entities
         public  decimal Discount { get; set; }
 
         public Brand Brand { get; set; }
+
+        public ICollection<Category> Categories { get; set; }
 
         public ICollection<ProductCategory> ProductCategories { get; set; }
 

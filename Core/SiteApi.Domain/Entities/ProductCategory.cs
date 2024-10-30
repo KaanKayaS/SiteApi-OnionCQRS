@@ -13,7 +13,7 @@ namespace SiteApi.Domain.Entities
 
         public int CategoryId { get; set; }
 
-        public Product Product { get; set; }
+        public Product Product { get; set; } 
 
         public Category Category { get; set; }  
 
