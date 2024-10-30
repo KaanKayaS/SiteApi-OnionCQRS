@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SiteApi.Persistence.Context;
 
@@ -11,9 +12,11 @@ using SiteApi.Persistence.Context;
 namespace SiteApi.Persistence.Migrations
 {
     [DbContext(typeof(AppDbConetxt))]
-    partial class AppDbConetxtModelSnapshot : ModelSnapshot
+    [Migration("20241029195316_update1")]
+    partial class update1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

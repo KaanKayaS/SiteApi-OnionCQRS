@@ -15,8 +15,4 @@
     <ProjectReference Include="..\SiteApi.Domain\SiteApi.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Products\Command\" />
-  </ItemGroup>
-
 </Project>
