@@ -21,7 +21,7 @@ namespace SiteApi.Application.Features.Products.Command.CreateProduct
 
         public async Task Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
         {
-            Product product = new(request.Title, request.Description,request.BrandId,request.Price,request.Discount);
+            Product product = new(request.Title, request.Description, request.BrandId, request.Price, request.Discount);
 
             await unitOfWork.GetWriteRepository<Product>().AddAsync(product);
 
