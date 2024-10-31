@@ -42,8 +42,7 @@ namespace SiteApi.Application.Exceptions
 
 			List<string> errors = new()
 			{
-				exception.Message,
-				exception.InnerException?.ToString(),
+				exception.Message
 			};
 
 			return httpContext.Response.WriteAsync(new ExceptionModel
