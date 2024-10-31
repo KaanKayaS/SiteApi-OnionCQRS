@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SiteApi.Application.Interfaces.Repositories;
 using SiteApi.Application.Interfaces.UnitOfWorks;
+using SiteApi.Domain.Entities;
 using SiteApi.Persistence.Context;
 using SiteApi.Persistence.Repositories;
 using SiteApi.Persistence.UnitOfWorks;
@@ -25,6 +26,19 @@ namespace SiteApi.Persistence
             services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddIdentityCore<User>(opt =>
+            {
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequiredLength = 2;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireDigit = false;
+                opt.SignIn.RequireConfirmedEmail = false;
+
+            }) 
+                .AddRoles<Role>()
+                .AddEntityFrameworkStores<AppDbConetxt>();
 
         }
     }
