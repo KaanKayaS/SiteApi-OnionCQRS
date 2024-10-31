@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Globalization;
 using MediatR;
 using SiteApi.Application.Beheviors;
+using SiteApi.Application.Features.Products.Rules;
 
 namespace SiteApi.Application
 {
@@ -20,6 +21,7 @@ namespace SiteApi.Application
             var assembly = Assembly.GetExecutingAssembly();
 
             services.AddTransient<ExceptionMiddleware>();
+            services.AddTransient<ProductRules>();
 
             services.AddMediatR(cfg  => cfg.RegisterServicesFromAssembly(assembly));
 
