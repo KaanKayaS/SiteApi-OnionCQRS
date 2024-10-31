@@ -13,7 +13,7 @@ namespace SiteApi.Application.Exceptions
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(Errors);
+            return JsonConvert.SerializeObject(Errors); // errors propunu json formatına dönüştürür.
         }
     }
 
