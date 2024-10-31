@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SiteApi.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace SiteApi.Persistence.Context
 {
-    public class AppDbConetxt : DbContext
+    public class AppDbConetxt : IdentityDbContext<User, Role, Guid>
     {
         public AppDbConetxt() { }
 
