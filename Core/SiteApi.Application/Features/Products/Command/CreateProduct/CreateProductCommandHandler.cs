@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SiteApi.Application.Features.Products.Command.CreateProduct
 {
-    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest>
+    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest,Unit>
     {
         private readonly IUnitOfWork unitOfWork;
 
@@ -19,7 +19,7 @@ namespace SiteApi.Application.Features.Products.Command.CreateProduct
         }
 
 
-        public async Task Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
         {
             Product product = new(request.Title, request.Description, request.BrandId, request.Price, request.Discount);
 
@@ -40,6 +40,8 @@ namespace SiteApi.Application.Features.Products.Command.CreateProduct
                 await unitOfWork.SaveAsync();
 
             }
+
+            return Unit.Value;
         }
     }
 }

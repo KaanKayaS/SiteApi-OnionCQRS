@@ -4,8 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using FluentValidation;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
+using MediatR;
+using SiteApi.Application.Beheviors;
 
 namespace SiteApi.Application
 {
@@ -18,6 +22,11 @@ namespace SiteApi.Application
             services.AddTransient<ExceptionMiddleware>();
 
             services.AddMediatR(cfg  => cfg.RegisterServicesFromAssembly(assembly));
+
+            services.AddValidatorsFromAssembly(assembly);
+            ValidatorOptions.Global.LanguageManager.Culture = new CultureInfo("tr");
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
         }
     }
 }
