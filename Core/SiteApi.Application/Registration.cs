@@ -11,6 +11,7 @@ using System.Globalization;
 using MediatR;
 using SiteApi.Application.Beheviors;
 using SiteApi.Application.Features.Products.Rules;
+using SiteApi.Application.Features.Auth.Rules;
 
 namespace SiteApi.Application
 {
@@ -29,6 +30,7 @@ namespace SiteApi.Application
             ValidatorOptions.Global.LanguageManager.Culture = new CultureInfo("tr");
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
+            services.AddScoped<AuthRules>();
         }
     }
 }
