@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace SiteApi.Infrastructure.Tokens
 {
-    internal class TokenSettings
-    {
+
     }
 }

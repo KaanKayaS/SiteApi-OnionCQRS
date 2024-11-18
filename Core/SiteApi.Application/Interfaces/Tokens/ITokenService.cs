@@ -15,6 +15,5 @@ namespace SiteApi.Application.Interfaces.Tokens
 
         string GenerateRefreshToken();
 
-        ClaimsPrincipal? GetPrincipalFromExpiredToken(string? token);
     }
 }
