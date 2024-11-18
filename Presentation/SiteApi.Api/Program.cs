@@ -1,5 +1,6 @@
 using SiteApi.Persistence;
 using SiteApi.Application;
+using SiteApi.Infrastructure;
 using SiteApi.Mapper;
 using SiteApi.Application.Exceptions;
 using Microsoft.OpenApi.Models;
