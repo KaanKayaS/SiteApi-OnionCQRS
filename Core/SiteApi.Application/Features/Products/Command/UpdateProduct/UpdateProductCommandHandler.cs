@@ -1,4 +1,6 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
+using SiteApi.Application.Bases;
 using SiteApi.Application.Interfaces.AutoMapper;
 using SiteApi.Application.Interfaces.UnitOfWorks;
 using SiteApi.Domain.Entities;
@@ -10,15 +12,10 @@ using System.Threading.Tasks;
 
 namespace SiteApi.Application.Features.Products.Command.UpdateProduct
 {
-    public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommandRequest,Unit>
+    public class UpdateProductCommandHandler : BaseHandler, IRequestHandler<UpdateProductCommandRequest,Unit>
     {
-        private readonly IUnitOfWork unitOfWork;
-        private readonly IMapper mapper;
-
-        public UpdateProductCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public UpdateProductCommandHandler(IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor) : base(mapper,unitOfWork,httpContextAccessor)
         {
-            this.unitOfWork = unitOfWork;
-            this.mapper = mapper;
         }
 
 

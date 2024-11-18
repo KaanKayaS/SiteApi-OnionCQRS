@@ -4,6 +4,9 @@ using SiteApi.Infrastructure;
 using SiteApi.Mapper;
 using SiteApi.Application.Exceptions;
 using Microsoft.OpenApi.Models;
+using SiteApi.Domain.Entities;
+using SiteApi.Persistence.Context;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +16,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 var env = builder.Environment;
 
