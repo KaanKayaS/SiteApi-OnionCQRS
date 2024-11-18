@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+
 using SiteApi.Infrastructure.Tokens;
 using System;
 using System.Collections.Generic;
@@ -15,6 +14,7 @@ namespace SiteApi.Mapper
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<TokenSettings>(configuration.GetSection("JWT"));
+
            
         }
     }

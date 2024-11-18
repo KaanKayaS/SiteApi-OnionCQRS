@@ -57,12 +57,7 @@ namespace SiteApi.Infrastructure.Tokens
 
         public string GenerateRefreshToken()
         {
-            throw new NotImplementedException();
-        }
 
-        public ClaimsPrincipal? GetPrincipalFromExpiredToken()
-        {
-            throw new NotImplementedException();
         }
     }
 }
