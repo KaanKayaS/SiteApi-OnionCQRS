@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SiteApi.Application.Features.Products.Command.CreateProduct;
@@ -20,6 +21,7 @@ namespace SiteApi.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
 
         public async Task<IActionResult> GetAllProducts()
         {
