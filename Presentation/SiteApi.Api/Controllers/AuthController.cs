@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SiteApi.Application.Features.Auth.Command.Login;
+using SiteApi.Application.Features.Auth.Command.RefreshToken;
 using SiteApi.Application.Features.Auth.Command.Register;
 
 namespace SiteApi.Api.Controllers
@@ -26,6 +27,14 @@ namespace SiteApi.Api.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginCommandRequest request)
+        {
+            var response = await mediator.Send(request);
+            return StatusCode(StatusCodes.Status200OK, response);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> RefreshToken(RefreshTokenCommandRequest request)
         {
             var response = await mediator.Send(request);
             return StatusCode(StatusCodes.Status200OK, response);
