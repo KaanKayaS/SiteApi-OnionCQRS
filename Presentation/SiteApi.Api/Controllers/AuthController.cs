@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using SiteApi.Application.Features.Auth.Command.Login;
 using SiteApi.Application.Features.Auth.Command.RefreshToken;
 using SiteApi.Application.Features.Auth.Command.Register;
+using SiteApi.Application.Features.Auth.Command.Revoke;
+using SiteApi.Application.Features.Auth.Command.RevokeAll;
 
 namespace SiteApi.Api.Controllers
 {
@@ -38,6 +40,20 @@ namespace SiteApi.Api.Controllers
         {
             var response = await mediator.Send(request);
             return StatusCode(StatusCodes.Status200OK, response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Revoke(RevokeCommandRequest request)
+        {
+            await mediator.Send(request);
+            return StatusCode(StatusCodes.Status200OK);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RevokeAll()
+        {
+            await mediator.Send(new RevokeAllCommandRequest());
+            return StatusCode(StatusCodes.Status200OK);
         }
     }
 }

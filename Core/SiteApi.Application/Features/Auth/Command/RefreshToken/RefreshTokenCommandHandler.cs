@@ -39,7 +39,7 @@ namespace SiteApi.Application.Features.Auth.Command.RefreshToken
             IList<string> roles = await userManager.GetRolesAsync(user);
 
 
-            authRules.RefreshTokenShouldNotBeExpired(user.RefreshTokenExpiryTime);
+            await authRules.RefreshTokenShouldNotBeExpired(user.RefreshTokenExpiryTime);
 
             JwtSecurityToken newAccessToken = await tokenService.CreateToken(user, roles);
             string newRefreshToken = tokenService.GenerateRefreshToken();
