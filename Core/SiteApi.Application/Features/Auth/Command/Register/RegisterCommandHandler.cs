@@ -34,7 +34,7 @@ namespace SiteApi.Application.Features.Auth.Command.Register
 
             User user = mapper.Map<User, RegisterCommandRequest>(request);
             user.UserName = request.Email;
-            user.SecurityStamp = Guid.NewGuid().ToString();
+            user.SecurityStamp = Guid.NewGuid().ToString();  // aynı anda update giriş bu tarz şeylerde milisaniyelik fark için kullanılır.
 
           
             IdentityResult result = await userManager.CreateAsync(user, request.Password);

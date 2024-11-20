@@ -1,4 +1,5 @@
-﻿using SiteApi.Application.Bases;
+﻿using Microsoft.AspNet.Identity;
+using SiteApi.Application.Bases;
 using SiteApi.Application.Features.Auth.Exceptions;
 using SiteApi.Domain.Entities;
 using System;
@@ -20,6 +21,12 @@ namespace SiteApi.Application.Features.Auth.Rules
         public Task EmailOrPasswordShouldNotBeInvalid(User? user, bool checkPassword)
         {
             if(user is null ||  !checkPassword) throw new EmailOrPasswordShouldNotBeInvalidException();
+            return Task.CompletedTask;
+        }
+
+        public Task RefreshTokenShouldNotBeExpired(DateTime? expiryDate)
+        {
+            if (expiryDate <= DateTime.Now) throw new RefreshTokenShouldNotBeExpiredException();
             return Task.CompletedTask;
         }
     }
